@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Profile
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+
+        <ion-item>
+            <ion-avatar item-left>
+                <img [src]="currentUser.photoURL">
+            </ion-avatar>
+            <h2>{{currentUser.displayName}}</h2>
+        </ion-item>
+
+
+        <ion-card-content>
+            <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a
+                DeLorean?! Whoa. This is heavy.</p>
+        </ion-card-content>
+
+        <ion-item>
+            <ion-icon name="book" item-left large></ion-icon>
+            <h2>{{tasksAmount}} Tasks</h2>
+            <p></p>
+        </ion-item>
+
+        <ion-item>
+            <ion-item>
+                <ion-icon name="people" item-left large></ion-icon>
+                <h2>Communities</h2>
+            </ion-item>
+            <ion-list inset>
+                <ion-item *ngFor="let item of communitiesIds">
+                    {{userService.communities[item].name}}
+                </ion-item>
+            </ion-list>
+        </ion-item>
+
+
+    </ion-card>
+</ion-content>

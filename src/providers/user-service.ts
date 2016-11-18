@@ -28,7 +28,9 @@ export class UserService {
         this.firebaseRef = firebase;
         this.firebaseAuth = firebase.auth();
         this.firebaseDb = firebase.database().ref();
-
+        if(this.firebaseAuth.currentUser) {
+            this.getUserById(this.firebaseAuth.currentUser.uid);
+        }
     };
 
     signInWithGoogle() {
@@ -48,6 +50,7 @@ export class UserService {
             this.adminUser = user.val();
             this.adminUser["userId"]=reqUserId;
             localStorage.setItem('currentUser',JSON.stringify(this.adminUser));
+            localStorage.setItem('currentUserId',reqUserId);
             this.currentUserObs.next(user.val());
         });
     };

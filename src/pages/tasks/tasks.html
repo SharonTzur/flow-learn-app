@@ -1,17 +1,75 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Tasks
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar  color="basic-blue">
+
+        <ion-buttons start>
+            <button (click)="editTask(event,null)" ion-button icon-only>
+                <ion-icon name="search"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>Tasks</ion-title>
+
+        <ion-buttons end>
+            <button (click)="grid=!grid" ion-button icon-only>
+                <ion-icon name="list" *ngIf="grid"></ion-icon>
+                <ion-icon name="grid" *ngIf="!grid"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
 </ion-header>
 
+<ion-fab left bottom>
+    <button (click)="editTask(event,null)" color="basic-blue" ion-fab><ion-icon name="add"></ion-icon> </button>
+</ion-fab>
+
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-left></ion-icon>
-      @ionicframework
-    </ion-item>
-  </ion-list>
+    <ion-list [class]="grid ? 'grid-list' : 'one-list'">
+
+        <ion-card *ngFor="let task of userTasks" (click)="editTask(event,task)">
+            <ion-item-sliding>
+                <ion-item>
+                    <ion-card-header>
+                        <ion-item>
+                            <ion-thumbnail *ngIf="!grid" item-right ng-if="task.featuredImage">
+                                <img [src]="task.featuredImage">
+                            </ion-thumbnail>
+                            <h2> {{task.title}} </h2>
+                        </ion-item>
+                    </ion-card-header>
+                    <ion-row>
+                        <ion-col center text-center>
+                            <ion-icon name="document" [color]="task.content ? 'dark' : 'gray'"></ion-icon>
+                        </ion-col>
+                        <ion-col center text-center>
+                            <ion-icon name="flag" [color]="task.type ? 'dark' : 'gray'"></ion-icon>
+                        </ion-col>
+                        <ion-col center text-center>
+                            <ion-icon name="search" [color]="task.reason ? 'dark' : 'gray'"></ion-icon>
+                        </ion-col>
+                        <ion-col center text-center>
+                            <ion-icon name="school" [color]="task.products ? 'dark' : 'gray'"></ion-icon>
+                        </ion-col>
+                        <ion-col center text-center>
+                            <ion-icon name="quote" [color]="task.phrases ? 'dark' : 'gray'"></ion-icon>
+                        </ion-col>
+                        <ion-col center text-center>
+                            <ion-icon name="megaphone" [color]="task.conclusions ?'dark' : 'gray'"></ion-icon>
+                        </ion-col>
+
+                    </ion-row>
+                </ion-item>
+                <ion-item-options side="right">
+                    <button ion-button color="danger">
+                        <ion-icon name="trash"></ion-icon>
+                        Delete
+                    </button>
+                    <button ion-button color="secondary">
+                        <ion-icon name="checkmark"></ion-icon>
+                        Done
+                    </button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-card>
+
+
+    </ion-list>
 </ion-content>

@@ -6,6 +6,11 @@ import { TasksPage } from '../pages/tasks/tasks';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import {UserService} from "../providers/user-service";
+import {TaskService} from "../providers/task-service";
+import {TranslatePipe} from "../providers/translate/translate.pipe";
+import {TranslateService} from "../providers/translate/translate.service";
+import {TRANSLATION_PROVIDERS} from "../providers/translate/translations";
+import {EditTaskPage} from "../pages/edit-task/edit-task";
 
 @NgModule({
   declarations: [
@@ -13,7 +18,9 @@ import {UserService} from "../providers/user-service";
     AboutPage,
     TasksPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    EditTaskPage
+
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -24,8 +31,9 @@ import {UserService} from "../providers/user-service";
     AboutPage,
     TasksPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    EditTaskPage
   ],
-  providers: [UserService]
+  providers: [UserService,TaskService]
 })
 export class AppModule {}

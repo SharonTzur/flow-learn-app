@@ -1,3 +1,113 @@
 page-tasks {
+  font-family       : 'assistant', 'raleway', sans-serif;
+  ion-item-options {
+    justify-content : flex-start;
+
+  }
+  .grid-list {
+    padding           : 0;
+    margin            : 0;
+    list-style        : none;
+
+    display           : -webkit-box;
+    display           : -moz-box;
+    display           : -ms-flexbox;
+    display           : -webkit-flex;
+    display           : flex;
+    -webkit-flex-flow : row wrap;
+    justify-content   : space-around;
+
+    .card {
+      padding                     : 0;
+      width                       : 48%;
+      height                      : auto;
+      margin                      : 10px 0 0 0;
+      line-height                 : 150px;
+      color                       : white;
+      font-weight                 : bold;
+      font-size                   : 3em;
+      text-align                  : center;
+      &:nth-of-type(even) {
+      -webkit-animation           : slideInSide ease-in 1;
+      animation                   : slideInSide ease-in 1;
+      -webkit-animation-fill-mode : forwards;
+      animation-fill-mode         : forwards;
+      -webkit-animation-duration  : 750ms;
+      animation-duration          : 750ms;
+    }
+      &:nth-of-type(odd) {
+      -webkit-animation           : slideInUpDown ease-in 1;
+      animation                   : slideInUpDown ease-in 1;
+      -webkit-animation-fill-mode : forwards;
+      animation-fill-mode         : forwards;
+      -webkit-animation-duration  : 750ms;
+      animation-duration          : 750ms;
+    }
+      .card-header {
+        padding : 3px;
+        .item {
+          padding-left : 0;
+          .item-inner {
+            padding-right : 0;
+          }
+        }
+      }
+    }
+  }
+
+  .one-list {
+    .card {
+      -webkit-animation           : slideInDown ease-in 1;
+      animation                   : slideInDown ease-in 1;
+      -webkit-animation-fill-mode : forwards;
+      animation-fill-mode         : forwards;
+      -webkit-animation-duration  : 750ms;
+      animation-duration          : 750ms;
+      .card-header {
+        padding : 4px;
+      }
+    }
+  }
+  @-webkit-keyframes slideInUpDown {
+    0% {
+      -webkit-transform : translate3d(-10%, 15%, 0);
+    }
+
+    50% {
+      -webkit-transform : translate3d(10%, -15%, 0);
+    }
+
+    100% {
+      -webkit-transform : translate3d(0, 0, 0);
+    }
+  }
+
+  @-webkit-keyframes slideInSide {
+    0% {
+      -webkit-transform : translate3d(18%, -5%,0);
+    }
+
+    50% {
+      -webkit-transform : translate3d(-5%, 15%, 0);
+    }
+
+    100% {
+      -webkit-transform : translate3d(0, 0, 0);
+    }
+  }
+
+  @-webkit-keyframes slideInDown{
+    0% {
+      -webkit-transform : translate3d(0, -15%, 0);
+    }
+
+    50% {
+      -webkit-transform : translate3d(0, 15%, 0);
+    }
+
+    100% {
+      -webkit-transform : translate3d(0, 0, 0);
+    }
+  }
 
 }

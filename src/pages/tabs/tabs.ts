@@ -7,6 +7,7 @@ import {TasksPage} from "../tasks/tasks";
 
 @Component({
   templateUrl: 'tabs.html',
+  selector: 'page-tabs',
   changeDetection: ChangeDetectionStrategy.Default,
 })
 export class TabsPage {
@@ -15,10 +16,12 @@ export class TabsPage {
   tab1Root: any = HomePage;
   tab2Root: any = TasksPage;
   tab3Root: any = AboutPage;
-  currentUser:any;
+  showLogin:boolean=true;
 
   constructor(private userService : UserService) {
-
+    if(localStorage.getItem('currentUser')){
+      this.showLogin = false;
+    }
   }
 
   ngOnInit(){

@@ -1,11 +1,11 @@
-<ion-tabs *ngIf="userService.firebaseAuth.currentUser">
+<ion-tabs color="basic-blue" *ngIf="!showLogin">
   <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
   <ion-tab [root]="tab2Root" tabTitle="Tasks" tabIcon="book"></ion-tab>
   <ion-tab [root]="tab3Root"  tabTitle="Profile" tabIcon="contact"></ion-tab>
 </ion-tabs>
 
 
-<ion-card *ngIf="!userService.firebaseAuth.currentUser">
+<ion-card *ngIf="showLogin">
   <ion-card-header>
     Flow Learn
   </ion-card-header>

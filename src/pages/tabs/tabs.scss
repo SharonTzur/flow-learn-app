@@ -1,0 +1,22 @@
+page-tabs {
+  .tab-button {
+    &:after {
+      content    : '';
+      display    : block;
+      position   : absolute;
+      right      : 0;
+      bottom     : 0;
+      height     : 2px;
+      width      : 0;
+      background : transparent;
+      transition : width .5s ease, background-color .5s ease;
+    }
+
+    &[aria-selected=true] {
+      &:after {
+        width      : 100%;
+        background : white;
+      }
+    }
+  }
+}

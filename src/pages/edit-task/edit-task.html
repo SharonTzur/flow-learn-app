@@ -1,10 +1,23 @@
 <ion-header>
     <ion-navbar color="basic-blue">
         <ion-title>Add/Edit Task</ion-title>
+        <ion-buttons start>
+            <button ion-button icon-only>
+                <ion-icon name="send"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 <ion-content>
     <ion-list>
         {{task.title}}
     </ion-list>
+    <ion-tabs color="basic-blue" tabsPlacement="top">
+        <ion-tab [root]="tab1Root"   tabIcon="document" [rootParams]="task"></ion-tab>
+        <ion-tab [root]="tab1Root"  tabIcon="flag"></ion-tab>
+        <ion-tab [root]="tab1Root"  tabIcon="search"></ion-tab>
+        <ion-tab [root]="tab1Root"  tabIcon="school"></ion-tab>
+        <ion-tab [root]="tab1Root"  tabIcon="quote"></ion-tab>
+        <ion-tab [root]="tab1Root"  tabIcon="megaphone"></ion-tab>
+    </ion-tabs>
 </ion-content>

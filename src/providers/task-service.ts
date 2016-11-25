@@ -40,7 +40,9 @@ export class TaskService {
        this.getRecords(this.userTasksPath).subscribe((userTasks)=> {
            var userTasksIdsArr = [];
            for (let taskId in userTasks) {
-               userTasksIdsArr.push(userTasks[taskId].taskId);
+               if(userTasks[taskId].relation == 'creator') {
+                   userTasksIdsArr.push(userTasks[taskId].taskId);
+               }
            }
            this.userTasksIds = userTasksIdsArr;
 
@@ -49,11 +51,18 @@ export class TaskService {
                var filteredTasks = [];
                var tasksIds = this.userTasksIds;
                for (let taskId in tasks) {
-                   if (tasksIds.includes(taskId)) {
+                   for(var i=0; i<tasksIds.length;i++){
+                       if(tasksIds[i]==taskId){
+                           let newTask = tasks[taskId];
+                           newTask["$key"] = taskId;
+                           filteredTasks.push(newTask);
+                       }
+                   }
+                   /*if (tasksIds.includes(taskId)) {
                        let newTask = tasks[taskId];
                        newTask["$key"] = taskId;
                        filteredTasks.push(newTask);
-                   }
+                   }*/
                }
                this.filteredTasks = filteredTasks;
                this.userTasks.next(this.filteredTasks);

@@ -1,0 +1,46 @@
+<div class="form-container" [ngSwitch]="section">
+    <div *ngSwitchCase="0">
+        <ion-item>
+            <ion-label floating>Title</ion-label>
+            <ion-input type="text" [(ngModel)]="task.title"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Description</ion-label>
+            <ion-textarea [(ngModel)]="task.content.text"></ion-textarea>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Url</ion-label>
+            <ion-input type="text" [(ngModel)]="task.content.url"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>File</ion-label>
+            <ion-input type="file" [(ngModel)]="task.content.file"></ion-input>
+        </ion-item>
+    </div>
+
+    <div *ngSwitchCase="1">
+        <ion-item *ngFor="let type of typeOpts">
+            <ion-label>{{type.subject}}</ion-label>
+
+            <ion-select [(ngModel)]="type.chosen" (ionChange)="updateTaskType(ev)" multiple="true" cancelText="Cancel"
+                        okText="Done">
+                <ion-option *ngFor="let choice of type.choices" [value]="choice">
+                    {{choice}}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+        <!--<div *ngFor="let chosenType of task.type">{{chosenType}}</div>-->
+    </div>
+    <div *ngSwitchCase="2">
+        <ion-item *ngFor="let type of reasonOpts">
+            <ion-label>{{type.subject}}</ion-label>
+
+            <ion-select [(ngModel)]="type.chosen" (ionChange)="updateReasonType(ev)" multiple="true" cancelText="Cancel"
+                        okText="Done">
+                <ion-option *ngFor="let choice of type.choices" [value]="choice">
+                    {{choice}}
+                </ion-option>
+            </ion-select>
+        </ion-item>
+    </div>
+</div>
